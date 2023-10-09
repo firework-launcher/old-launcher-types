@@ -159,15 +159,13 @@ class Launcher:
 
         self.launcher_io.add_launcher(self)
     
-    def write_to_launcher(self, pin, value):
+    def write_to_launcher(self, pin):
         """
         Writes to the launcher
         """
         if self.armed:
-            pin -= 1
-            if value == 1:
-                self.obj.set_output([pin])
-                self.launcher_io.logging.debug('Triggered firework {} on shift register {}'.format(pin, self.port))
+            self.obj.set_output([pin])
+            self.launcher_io.logging.debug('Triggered firework {} on shift register {}'.format(pin, self.port))
     
     def run_step(self, step):
         """
